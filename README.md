@@ -1,135 +1,144 @@
 <div align="center">
 
-# 🏛️ Blockchain Land Registry & Property Transfer
+# 🏛️ LandChain
 
-### A permissioned consortium-chain prototype for fraud-proof land records
+### Blockchain-Based Land Registry & Property Transfer System
 
-*No more duplicate registrations · Transfers in days, not weeks · Instant ownership checks for banks*
-
-<br/>
-
-![Solidity](https://img.shields.io/badge/Solidity-0.8.24-363636?style=for-the-badge&logo=solidity&logoColor=white)
-![Hardhat](https://img.shields.io/badge/Hardhat-2.x-FFF100?style=for-the-badge&logo=hardhat&logoColor=black)
-![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-5.x-4E5EE4?style=for-the-badge&logo=openzeppelin&logoColor=white)
-![Ethers.js](https://img.shields.io/badge/ethers.js-v6-2535A0?style=for-the-badge&logo=ethereum&logoColor=white)
-<br/>
-![Hyperledger Besu](https://img.shields.io/badge/Hyperledger_Besu-QBFT-2F3134?style=for-the-badge&logo=hyperledger&logoColor=white)
-![Polygon](https://img.shields.io/badge/Polygon-Amoy_Anchor-7B3FE4?style=for-the-badge&logo=polygon&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-%E2%89%A518-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+*Every parcel, every sale, every court order — recorded on a permissioned ledger that land grabbers can't forge.*
 
 <br/>
 
-![Tests](https://img.shields.io/badge/tests-47_passing-brightgreen?style=flat-square)
-![Coverage](https://img.shields.io/badge/line_coverage-97.6%25-brightgreen?style=flat-square)
-![Slither](https://img.shields.io/badge/slither-102_detectors-blue?style=flat-square)
-![License](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)
+[![Solidity](https://img.shields.io/badge/Solidity-0.8.24-363636?style=for-the-badge&logo=solidity&logoColor=white)](https://soliditylang.org/)
+[![Hardhat](https://img.shields.io/badge/Hardhat-2.29-FFF100?style=for-the-badge&logo=ethereum&logoColor=black)](https://hardhat.org/)
+[![Hyperledger Besu](https://img.shields.io/badge/Hyperledger_Besu-QBFT_×4-2F3134?style=for-the-badge&logo=hyperledger&logoColor=white)](https://besu.hyperledger.org/)
+[![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-5.x-4E5EE4?style=for-the-badge&logo=openzeppelin&logoColor=white)](https://openzeppelin.com/)
+[![Polygon](https://img.shields.io/badge/Polygon-Amoy_Anchor-7B3FE4?style=for-the-badge&logo=polygon&logoColor=white)](https://polygon.technology/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
+
+[![Tests](https://img.shields.io/badge/tests-47%20passing-brightgreen?style=flat-square)](test/)
+[![Coverage](https://img.shields.io/badge/coverage-97.6%25-brightgreen?style=flat-square)](reports/coverage-summary.txt)
+[![Attacks Blocked](https://img.shields.io/badge/demo%20attacks%20blocked-5%2F5-red?style=flat-square)](reports/demo-output.txt)
+[![Slither](https://img.shields.io/badge/slither-audited-blueviolet?style=flat-square)](reports/slither-after.txt)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](#-license)
 
 <br/>
 
-[✨ Features](#-key-features) ·
-[🏗️ Architecture](#%EF%B8%8F-architecture) ·
-[🚀 Quick Start](#-quick-start) ·
-[📊 Dashboard](#-web-dashboard) ·
-[🌐 Deploying](#-deploying) ·
-[📈 Results](#-measured-results) ·
-[🛡️ Security](#%EF%B8%8F-static-analysis)
+**[Overview](#-overview)** · **[Features](#-key-features)** · **[Architecture](#%EF%B8%8F-architecture)** · **[Quick Start](#-quick-start)** · **[Demo](#%EF%B8%8F-attack-demo)** · **[Results](#-measured-results)** · **[Team](#-team)**
 
 </div>
 
 ---
 
-## 🎓 About the Project
+## 📖 Overview
 
-> **Course:** CS-491 Blockchain Technologies and Applications — Complex Engineering Problem (CEP), Scenario A
-> **Institution:** Mehran University of Engineering and Technology, Jamshoro
+Fake duplicate registrations, weeks-long transfers and banks that can't confirm who owns a plot — land records are one of the most fraud-prone systems a government runs. **LandChain** is a permissioned consortium blockchain prototype for a provincial land revenue department that fixes all three.
 
-A provincial land revenue department wants three things:
+It records **parcel registration**, **property sales**, **bank mortgages** and **court orders** on a **Hyperledger Besu QBFT** chain run by known institutions. Citizens are identified only by **hashed CNIC commitments**, documents stay off-chain as **hashes**, and the consortium state is periodically **anchored to Polygon Amoy** so outsiders can verify it. A live web dashboard shows the register and lets a bank verify ownership in seconds.
 
-| 🚫 Problem today | ✅ What this system does |
-|---|---|
-| Fraudulent duplicate registrations | Deterministic parcel keys — a duplicate registration **reverts on-chain** |
-| Property transfers take weeks | A transparent sale state machine that finishes in **days** |
-| Banks wait to verify ownership | `verifyOwnership` answers **instantly** |
-
-This repository contains the smart-contract core of a **permissioned consortium chain (Hyperledger Besu, QBFT)**. Its state is periodically **anchored to a public chain** so outsiders can verify it.
-
-### 👥 Team
-
-<table>
-  <tr>
-    <td align="center"><b>👨‍💻 Muhammad Yahya</b><br/><code>22CS001</code></td>
-    <td align="center"><b>👨‍💻 Shehzad</b><br/><code>22CS049</code></td>
-    <td align="center"><b>👨‍💻 Muzzamil</b><br/><code>22CS073</code></td>
-  </tr>
-</table>
+> 🎓 **CS-491 Blockchain Technologies and Applications** · Complex Engineering Problem · Scenario A
+> **Mehran University of Engineering and Technology, Jamshoro**
 
 ---
 
 ## ✨ Key Features
 
-- 🔑 **Role-based access** — Registrar, Patwari, Bank, Court, Tax and KYC roles via OpenZeppelin `AccessControl`
-- 🪪 **Private identity** — only a hashed CNIC commitment is stored, bound one-to-one to a wallet
-- ♻️ **Key recovery** — lost wallets can be rebound after a 2-day objection window
-- 👮 **Two-official registration** — a Patwari proposes, a *different* Registrar approves
-- 🧾 **Sale workflow** — Initiated → Accepted → TaxCleared → 3-day public notice → Completed
-- 🏦 **Bank liens** — a mortgaged parcel cannot be sold until the lien holder releases it
-- ⚖️ **Court orders** — stays freeze a parcel; decrees append a corrective entry without erasing history
-- ⚓ **Public anchoring** — Merkle roots of parcel state checkpointed to Polygon Amoy
-- ⛽ **Zero-fee chain** — citizens never need cryptocurrency; gas only meters computation
-- 📄 **Documents off-chain** — only hashes of the Fard, sale deed, tax receipt and decree go on-chain
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🔐 Role-Based Consortium
+Registrar, Patwari, Bank, Court, Tax and KYC officials — each with on-chain roles via OpenZeppelin `AccessControl`.
+
+### 🚫 No Duplicate Parcels
+Each parcel's key is `keccak256(district, mouza, khasra)`, so registering the same plot twice **reverts on-chain**.
+
+### 👮 Two-Official Registration
+A Patwari **proposes**, a *different* Registrar **approves**. No single official can create land.
+
+### 🔄 Transparent Sale Workflow
+**Initiate → Accept → Tax cleared → 3-day public notice → Approve.** One open sale per parcel — no double-selling.
+
+</td>
+<td width="50%" valign="top">
+
+### 🏦 Bank Liens & Instant Checks
+With owner consent, a bank registers a mortgage; the plot **can't be sold** until it is released. `verifyOwnership` answers instantly.
+
+### ⚖️ Court Stays & Decrees
+A stay **freezes** a parcel; a decree appends a corrective ownership entry — **history is never erased**.
+
+### 🪪 Private Identity & Key Recovery
+Only salted CNIC hashes go on-chain. A lost wallet can be rebound after a **2-day objection window**.
+
+### ⚓ Public Anchoring · ⛽ Zero Fees
+State roots are checkpointed to **Polygon Amoy**. The Besu chain runs at zero gas price — citizens never need crypto.
+
+</td>
+</tr>
+</table>
 
 ---
 
 ## 🏗️ Architecture
 
 ```mermaid
-flowchart TB
-    RM["🔐 RoleManager<br/><sub>roles · CNIC commitments · key recovery</sub>"]
-    PR["📜 ParcelRegistry<br/><sub>Fard / Record of Rights</sub>"]
-    TM["🔄 TransferManager<br/><sub>sale state machine</sub>"]
-    LR["🏦 LienRegistry<br/><sub>bank charges</sub>"]
-    DR["⚖️ DisputeRegistry<br/><sub>court stays & decrees</sub>"]
-    SA["⚓ StateAnchor<br/><sub>public chain checkpoints</sub>"]
-
-    RM -. "hasRole / idOf" .-> PR
-    RM -. "hasRole / idOf" .-> TM
-    RM -. "hasRole / idOf" .-> LR
-    RM -. "hasRole / idOf" .-> DR
-    TM -- "transferOwnership" --> PR
-    TM -- "isEncumbered" --> LR
-    DR -- "setFrozen / courtOrderedTransfer" --> PR
-    PR == "block hash + Merkle root" ==> SA
-
-    subgraph Consortium["🏢 Hyperledger Besu · QBFT consortium"]
-        RM
-        PR
-        TM
-        LR
-        DR
+flowchart LR
+    subgraph Actors
+        PT[📝 Patwari]
+        RG[🏛️ Registrar]
+        CZ[🧑 Citizen]
+        BK[🏦 Bank]
+        CT[⚖️ Court]
+        TX[💰 Tax Officer]
+        KY[🪪 KYC · NADRA]
     end
-    subgraph Public["🌍 Public chain · Polygon Amoy"]
-        SA
+
+    subgraph Chain["⛓️ Besu QBFT Consortium (4 validators)"]
+        RM[RoleManager]
+        PR[ParcelRegistry]
+        TM[TransferManager]
+        LR[LienRegistry]
+        DR[DisputeRegistry]
     end
+
+    subgraph Public["🌍 Polygon Amoy"]
+        SA[StateAnchor]
+    end
+
+    KY -->|bind CNIC commitment| RM
+    PT -->|propose parcel| PR
+    RG -->|approve parcel / sale| PR
+    CZ -->|initiate / accept sale| TM
+    TX -->|clear tax| TM
+    BK -->|register / release lien| LR
+    BK -.->|verifyOwnership| PR
+    CT -->|stay / decree| DR
+
+    TM -->|transferOwnership| PR
+    TM -->|isEncumbered| LR
+    DR -->|freeze / court transfer| PR
+    PR & TM & LR & DR --> RM
+    PR ==>|block hash + Merkle root| SA
 ```
 
-### 📦 Smart Contracts
+### 🧱 Smart Contracts
 
 | Contract | Responsibility |
-|---|---|
-| 🔐 **`RoleManager`** | OpenZeppelin AccessControl roles (Registrar, Patwari, Bank, Court, Tax, KYC). One-to-one binding of a hashed CNIC commitment to a wallet. Key recovery with a 2-day objection delay. |
-| 📜 **`ParcelRegistry`** | Deterministic parcel key `keccak256(district, mouza, khasra)`, so a duplicate registration reverts. Two-official registration (Patwari proposes, a different Registrar approves). Only modules can change owners. Emergency pause. Instant `verifyOwnership` for banks. |
-| 🔄 **`TransferManager`** | Sale state machine: Initiated → Accepted → TaxCleared → (3-day public notice) → Completed / Cancelled / Rejected. One open transfer per parcel. Version pinning. |
-| 🏦 **`LienRegistry`** | Owner consent plus a bank registers a mortgage. While a lien is active the parcel cannot be sold. Only the lien holder can release it. |
-| ⚖️ **`DisputeRegistry`** | Court stay (freezes the parcel) and decree (appends a corrective ownership entry; history is preserved). |
-| ⚓ **`StateAnchor`** | Deployed on a public chain (e.g., Polygon Amoy). Stores monotonic checkpoints of consortium state. |
+| :--- | :--- |
+| 🔑 **`RoleManager`** | Roles (Registrar, Patwari, Bank, Court, Tax, KYC), one-to-one CNIC commitment ↔ wallet binding, key recovery with a 2-day objection delay |
+| 📜 **`ParcelRegistry`** | Deterministic parcel key, two-official registration, module-only owner changes, emergency pause, instant `verifyOwnership` |
+| 🔁 **`TransferManager`** | Sale state machine, one open transfer per parcel, 3-day public notice, version pinning |
+| 🏦 **`LienRegistry`** | Owner-consented bank mortgages; an active lien blocks sale; only the lien holder can release |
+| ⚖️ **`DisputeRegistry`** | Court stay (freezes the parcel) and decree (appends a corrective ownership entry) |
+| ⚓ **`StateAnchor`** | Deployed on a public chain; stores monotonic checkpoints of consortium state |
 
-### 🔄 Property Sale Lifecycle
+> 📁 Only **hashes** of documents (scanned Fard, sale deed, tax receipt, decree) go on-chain. The files live in the department's document store or a private IPFS cluster.
+
+### 🔄 Sale Lifecycle
 
 ```mermaid
 stateDiagram-v2
-    direction LR
-    [*] --> Initiated: seller starts sale
+    [*] --> Initiated: seller initiates
     Initiated --> Accepted: buyer accepts
     Accepted --> TaxCleared: tax officer clears
     TaxCleared --> Completed: registrar approves after 3-day notice
@@ -143,78 +152,83 @@ stateDiagram-v2
     Rejected --> [*]
 ```
 
-> 📁 Only **hashes** of documents (scanned Fard, sale deed, tax receipt, decree) go on-chain. The files themselves live in the department's document store or a private IPFS cluster.
-
 ---
 
-## 🧰 Prerequisites
+## 📂 Project Structure
 
-| Tool | Version | Required? |
-|---|---|---|
-| <img src="https://cdn.simpleicons.org/nodedotjs/339933" width="16"/> Node.js + npm | ≥ 18 (tested on v22) | ✅ Yes |
-| <img src="https://cdn.simpleicons.org/python/3776AB" width="16"/> Python 3 + `slither-analyzer` | any | ⚪ Optional — static analysis |
-| <img src="https://cdn.simpleicons.org/docker/2496ED" width="16"/> Docker | any | ⚪ Optional — 4-node Besu network |
-
-> 💡 The project compiles with the **bundled solc-js 0.8.24** (`npm` package `solc`), so it needs no compiler download and works offline or behind a university proxy. See `hardhat.config.js`.
+```text
+land-registry-dapp/
+├── 📜 contracts/            6 interacting contracts (Solidity 0.8.24, OpenZeppelin 5)
+├── 🧪 test/                 47 Mocha/Chai tests (fixture.js holds the shared deployment)
+├── ⚙️ scripts/
+│   ├── deploy.js            Deploy + wire contracts, write deployments/<network>.json
+│   ├── seed.js              Demo parcels, sales in every state, liens and court cases
+│   ├── demo.js              One plot's story with fraud attempts blocked along the way
+│   └── benchmark.js         Gas per op, TPS, tx/block, latency
+├── 📊 dashboard/            Live KPIs, parcel register, audit trail & bank check → http://localhost:3000
+├── 🌐 besu-network/         QBFT genesis config + docker-compose for 4 validators
+├── 📈 reports/              Saved gas, coverage, Slither, demo & benchmark outputs
+└── 📍 deployments/          Contract addresses written by deploy.js
+```
 
 ---
 
 ## 🚀 Quick Start
 
+### Prerequisites
+
+| Tool | Version | Required |
+| :--- | :--- | :---: |
+| [Node.js](https://nodejs.org) + npm | 18+ (tested on 22) | ✅ |
+| Git | any | ✅ |
+| Python + `slither-analyzer` | 3.x | ⚪ optional |
+| Docker | any | ⚪ optional |
+
+### Install, compile & test
+
 ```bash
-# 1️⃣  Install dependencies
+git clone https://github.com/yahyaCodeX/Blockchain-Based-Land-Registry-and-Property-Transfer-System.git
+cd Blockchain-Based-Land-Registry-and-Property-Transfer-System
 npm install --legacy-peer-deps
-
-# 2️⃣  Compile the contracts
 npm run compile
-
-# 3️⃣  Run the test suite
-npm test                 # 47 tests
-npm run test:gas         # tests + per-function gas table
-npm run coverage         # statement / branch coverage
-
-# 4️⃣  Watch the end-to-end story
-npm run demo             # the scenario used in the viva demo
+npm test                 # ✔ 47 passing
 ```
 
----
+> 💡 The project compiles with the **bundled solc-js 0.8.24**, so it needs no compiler download and works offline or behind a university proxy.
 
-## 📊 Web Dashboard
+### Run the live system — three terminals
 
-```bash
-npx hardhat node          # terminal 1 (leave running)
-npm run seed              # terminal 2: deploys + fills demo parcels, sales, liens, court cases
-npm run dashboard         # then open http://localhost:3000
-```
+| # | Command | What it does |
+| :---: | :--- | :--- |
+| 1️⃣ | `npx hardhat node` | Local blockchain at `http://127.0.0.1:8545` (leave running) |
+| 2️⃣ | `npm run seed` → `npm run dashboard` | Deploy + seed demo data, then serve **http://localhost:3000** |
+| 3️⃣ | `npm run demo` | Run the end-to-end fraud story used in the viva |
 
-The dashboard shows:
-
-- 📈 KPIs and the full parcel register
-- 🔄 Sales in every state, liens and court cases
-- 🕵️ The ownership audit trail
-- 📍 Contract addresses and the latest public anchor
-- 🏦 A **live bank ownership check** that calls `verifyOwnership`
-
-> 🔒 Names and places come from an off-chain directory (`dashboard/data/seed.json`). The chain stores only commitments and hashes.
-
----
-
-## 🌐 Deploying
+> 💡 Restarted the node? Run `npm run seed` again — the chain starts empty each time.
 
 <details>
-<summary><b>1️⃣ Local Hardhat network</b> — used for the report's measurements</summary>
+<summary><b>📋 All npm scripts</b></summary>
 
 <br/>
 
-```bash
-npx hardhat node                      # terminal 1 (30M gas blocks, chainId 31337)
-npm run deploy:local                  # terminal 2 -> deployments/localhost.json
-npm run benchmark                     # -> reports/benchmark.json
-```
+| Command | Description |
+| :--- | :--- |
+| `npm run compile` | Compile contracts |
+| `npm test` | Run the test suite |
+| `npm run test:gas` | Tests with per-function gas table |
+| `npm run coverage` | Statement / branch coverage report |
+| `npm run node` | Start local Hardhat node |
+| `npm run deploy:local` | Deploy to localhost → `deployments/localhost.json` |
+| `npm run seed` | Deploy + seed demo data |
+| `npm run demo` | End-to-end demo story |
+| `npm run benchmark` | Benchmark → `reports/benchmark.json` |
+| `npm run dashboard` | Start the web dashboard |
+| `npm run slither` | Static analysis |
+
 </details>
 
 <details>
-<summary><b>2️⃣ Hyperledger Besu QBFT consortium</b> — 4 validators</summary>
+<summary><b>⛓️ Run on a 4-validator Hyperledger Besu QBFT network (Docker)</b></summary>
 
 <br/>
 
@@ -228,11 +242,12 @@ cd ..
 DEPLOYER_KEY=0x... npx hardhat run scripts/deploy.js --network besu
 ```
 
-> ⛽ The genesis file uses `zeroBaseFee` and `--min-gas-price=0`, so citizens never need cryptocurrency: gas only meters computation.
+The genesis file uses `zeroBaseFee` and `--min-gas-price=0`, so citizens never need cryptocurrency: gas only meters computation.
+
 </details>
 
 <details>
-<summary><b>3️⃣ Public anchor on Polygon Amoy</b> — optional</summary>
+<summary><b>⚓ Deploy the public anchor to Polygon Amoy</b></summary>
 
 <br/>
 
@@ -240,17 +255,80 @@ DEPLOYER_KEY=0x... npx hardhat run scripts/deploy.js --network besu
 DEPLOYER_KEY=0x... AMOY_RPC=https://... npx hardhat run scripts/deploy.js --network amoy
 ```
 
-> Only `StateAnchor` is meaningful on the public chain.
+Only `StateAnchor` is meaningful on the public chain.
+
 </details>
 
 ---
 
-## 📈 Measured Results
+## 🛡️ Attack Demo
 
-<sub>Local Hardhat node, 30M block gas limit</sub>
+`npm run demo` walks one plot (245/3, district 31, mouza 101) through registration, mortgage, sale, a court case and key recovery — and tries **5 frauds** along the way. Every one is stopped on-chain.
 
-| ⚙️ Operation | ⛽ Gas |
-|---|---:|
+| # | Attack attempted | Blocked by |
+| :---: | :--- | :--- |
+| 1 | Fraudster-patwari registers the same plot again under another name | `DuplicateParcel` |
+| 2 | Owner sells a plot that is still mortgaged to a bank | `ParcelEncumbered` |
+| 3 | Owner double-sells the plot to a second buyer | `ParcelBusy` |
+| 4 | Registrar approves the sale before the 3-day public notice ends | `NoticePeriodRunning` |
+| 5 | Owner sells land frozen by a court stay | `ParcelNotActive` |
+
+<details>
+<summary><b>🧪 More attacks covered by the test suite</b></summary>
+
+<br/>
+
+| Attack attempted | Blocked by |
+| :--- | :--- |
+| One official both proposes and approves a parcel | `SameOfficial` |
+| Outsider calls a role-restricted function | `NotRole` / `AccessControlUnauthorizedAccount` |
+| Wallet or identity bound to two citizens | `WalletAlreadyBound` / `IdentityAlreadyBound` |
+| Bank registers a lien without owner consent | `NoConsent` |
+| Someone other than the lien holder releases a lien | `NotLienHolder` |
+| A non-module contract changes a parcel's owner | `NotModule` |
+| Governance swaps modules after they are locked | `ModulesAreLocked` |
+| Sale completed against an outdated parcel record | `StaleParcelVersion` |
+| Key recovery finished before the 2-day delay | `RecoveryNotReady` |
+| Public anchor rolled back to an older checkpoint | `NonMonotonic` |
+| Any write while the registry is paused | `EnforcedPause` |
+
+</details>
+
+<sub>Full run log: [reports/demo-output.txt](reports/demo-output.txt)</sub>
+
+---
+
+## 📊 Dashboard
+
+Run `npm run seed` then `npm run dashboard` and open **http://localhost:3000**. It shows:
+
+- 📈 KPIs and the full parcel register
+- 🔄 Sales in every state, liens and court cases
+- 🕵️ The ownership audit trail
+- 📍 Contract addresses and the latest public anchor
+- 🏦 A **live bank ownership check** that calls `verifyOwnership`
+
+> 🔒 Names and places come from an off-chain directory (`dashboard/data/seed.json`). The chain stores only commitments and hashes.
+
+---
+
+## 📊 Measured Results
+
+<div align="center">
+
+| 🧪 Tests | 📈 Coverage | 🛡️ Attacks | 🔍 Slither | ⛽ Deploy Gas |
+| :---: | :---: | :---: | :---: | :---: |
+| **47** passing | **96.55%** statements | **5 / 5** blocked in demo | **4 → 3** findings | **5.55M** total |
+
+</div>
+
+**Coverage:** 96.55% statements · 76.77% branches · 92.73% functions · 97.61% lines
+**Slither:** 0.11.6 ran 102 detectors. The 3 remaining findings are `block.timestamp` comparisons — accepted, since the delays last days and QBFT validators are known institutions.
+
+### ⛽ Gas per Operation
+
+| Operation | Gas |
+| :--- | ---: |
 | `verifyCitizen` | 93,873 |
 | `proposeParcel` + `approveParcel` | 123,631 + 61,504 = **185,135** |
 | Complete sale (initiate + accept + clearTax + approve) | **380,763** |
@@ -258,80 +336,74 @@ DEPLOYER_KEY=0x... AMOY_RPC=https://... npx hardhat run scripts/deploy.js --netw
 | `openCase` / `resolveCase` (with decree) | 178,985 / 69,563 |
 | Full system deployment | 5,552,680 |
 
-<table>
-  <tr>
-    <td align="center">⚡<br/><b>120–130 tx/s</b><br/><sub>sequential, 200 tx</sub></td>
-    <td align="center">⏱️<br/><b>p50 ≈ 5 ms · p95 ≈ 10 ms</b><br/><sub>latency, single node</sub></td>
-    <td align="center">📦<br/><b>242 tx / block</b><br/><sub><code>proposeParcel</code> per 30M gas</sub></td>
-    <td align="center">🏁<br/><b>≈ 3.4 M sales / day</b><br/><sub>Besu QBFT, 2 s blocks</sub></td>
-  </tr>
-</table>
+### ⚡ Throughput & Latency
 
-- 📦 Block packing of 242 `proposeParcel` tx per block matches 30,000,000 / 123,631.
-- 🔮 Besu QBFT projection at a 2 s block period: about **121 registrations/s**, or about **39 complete sales/s**.
+| Workload | Network | Result |
+| :--- | :--- | ---: |
+| Sequential, 200 tx | Hardhat node | **120–130 tx/s** |
+| Latency | Hardhat node | p50 ≈ **5 ms** · p95 ≈ **10 ms** |
+| Block packing (`proposeParcel`) | 30M gas block | **242 tx / block** |
+| Registrations (projected) | Besu QBFT, 2 s blocks | **≈ 121 / s** |
+| Complete sales (projected) | Besu QBFT, 2 s blocks | **≈ 39 / s** (≈ 3.4 M / day) |
 
-### 🧪 Test Coverage
-
-| File | % Stmts | % Branch | % Funcs | % Lines |
-|---|---:|---:|---:|---:|
-| `DisputeRegistry.sol` | 93.75 | 83.33 | 80 | 96 |
-| `LienRegistry.sol` | 93.33 | 75 | 83.33 | 95.83 |
-| `ParcelRegistry.sol` | 100 | 71.43 | 100 | 100 |
-| `RoleManager.sol` | 93.33 | 66.67 | 90 | 95 |
-| `StateAnchor.sol` | 85.71 | 100 | 80 | 85.71 |
-| `TransferManager.sol` | 100 | 88 | 100 | 100 |
-| **All files** | **96.55** | **76.77** | **92.73** | **97.61** |
-
-> 📂 Full outputs live in [`reports/`](reports/): `gas-report.txt`, `benchmark.json`, `coverage-summary.txt`, `slither-*.txt`, `demo-output.txt`.
+<sub>Local Hardhat node, 30M block gas limit. 242 tx/block matches 30,000,000 / 123,631. Raw data in [`reports/`](reports/).</sub>
 
 ---
 
-## 🛡️ Static Analysis
+## ⚠️ Limitations
 
-```bash
-npm run slither
-```
-
-Slither 0.11.6 ran **102 detectors** and reported **4 findings, 1 of which was fixed** (an unindexed event address).
-
-The other 3 are `block.timestamp` comparisons, which are accepted: the delays last days, and QBFT validators are known institutions, so the few seconds of timestamp drift a validator could introduce do not matter. See report §4.3.
-
----
-
-## 🗂️ Repository Layout
-
-```text
-📦 land-registry-dapp
- ┣ 📂 contracts/       6 Solidity contracts
- ┣ 📂 test/            47 Mocha/Chai tests (fixture.js holds the shared deployment)
- ┣ 📂 scripts/         deploy.js, demo.js, benchmark.js, seed.js
- ┣ 📂 dashboard/       web dashboard (server.js, index.html, app.js, style.css)
- ┣ 📂 besu-network/    QBFT genesis config + docker-compose for 4 validators
- ┣ 📂 reports/         gas, coverage, slither, benchmark, demo outputs
- ┗ 📂 deployments/     addresses written by deploy.js
-```
-
----
-
-## ⚠️ Limitations (Prototype)
-
-- 🪪 Identity commitments are created by a trusted KYC role. There is no live NADRA integration.
-- 🖥️ The dashboard is read-only (apart from the bank ownership check). Writes go through scripts, tests, or any EVM wallet/console.
-- 🔧 Contracts are not upgradeable by design. Governance replaces modules through `setModules` and then locks them, so a new version means a redeploy plus a migration (see report §5.4).
+- 🪪 Identity commitments are created by a trusted KYC role — there is no live NADRA integration.
+- 🖥️ The dashboard is read-only (apart from the bank check); writes go through scripts, tests or any EVM wallet.
+- 🔧 Contracts are not upgradeable by design. Governance replaces modules through `setModules` and then locks them, so a new version means a redeploy plus a migration.
 - 🚧 This code is **not production-audited**.
 
 ---
 
+## 🧰 Tech Stack
+
 <div align="center">
 
-## 📜 License
+![Solidity](https://img.shields.io/badge/Solidity-363636?style=for-the-badge&logo=solidity&logoColor=white)
+![Hardhat](https://img.shields.io/badge/Hardhat-FFF100?style=for-the-badge&logo=ethereum&logoColor=black)
+![Ethers.js](https://img.shields.io/badge/Ethers.js_v6-2535A0?style=for-the-badge&logo=ethereum&logoColor=white)
+![OpenZeppelin](https://img.shields.io/badge/OpenZeppelin-4E5EE4?style=for-the-badge&logo=openzeppelin&logoColor=white)
+![Hyperledger Besu](https://img.shields.io/badge/Besu-2F3134?style=for-the-badge&logo=hyperledger&logoColor=white)
+![Polygon](https://img.shields.io/badge/Polygon-7B3FE4?style=for-the-badge&logo=polygon&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Mocha](https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=mocha&logoColor=white)
+![Chai](https://img.shields.io/badge/Chai-A30701?style=for-the-badge&logo=chai&logoColor=white)
+
+</div>
+
+---
+
+## 👥 Team
+
+<div align="center">
+
+| 👤 Member | 🎫 Roll No. |
+| :--- | :---: |
+| **Muhammad Yahya** | 22CS001 |
+| **Shehzad** | 22CS049 |
+| **Muzzamil** | 22CS073 |
+
+*Mehran University of Engineering and Technology, Jamshoro*
+
+</div>
+
+---
+
+## 📄 License
 
 Released under the **MIT License**.
 
+<div align="center">
+
 <br/>
 
-Made with ❤️ at **Mehran University of Engineering and Technology, Jamshoro**
+**⭐ If you found this project useful, give it a star!**
 
-⭐ *If you find this project useful, consider giving it a star!*
+<sub>Built with 🏛️ + ⛓️ for honest land records.</sub>
 
 </div>
