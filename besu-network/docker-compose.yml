@@ -1,0 +1,30 @@
+# 4-validator Hyperledger Besu QBFT consortium (tolerates f = 1 faulty validator).
+# Validators in production: Board of Revenue, Registration Dept, State Bank / banking
+# consortium node, and High Court IT. Generate keys first:
+#   docker run --rm -v $PWD:/data hyperledger/besu:24.12.2 operator generate-blockchain-config \
+#     --config-file=/data/qbftConfigFile.json --to=/data/networkFiles --private-key-file-name=key
+# then copy networkFiles/keys/<addr>/key into node1..node4/ and networkFiles/genesis.json here.
+x-besu: &besu
+  image: hyperledger/besu:24.12.2
+  volumes: [ "./genesis.json:/config/genesis.json:ro" ]
+services:
+  node1:
+    <<: *besu
+    command: >
+      --genesis-file=/config/genesis.json --data-path=/data --node-private-key-file=/keys/key
+      --rpc-http-enabled --rpc-http-api=ETH,NET,QBFT,WEB3,TXPOOL --host-allowlist="*"
+      --rpc-http-cors-origins="*" --min-gas-price=0 --p2p-port=30303
+    volumes: [ "./genesis.json:/config/genesis.json:ro", "./node1:/keys:ro" ]
+    ports: [ "8545:8545" ]
+  node2:
+    <<: *besu
+    command: --genesis-file=/config/genesis.json --node-private-key-file=/keys/key --bootnodes=${BOOTNODE} --min-gas-price=0 --p2p-port=30304
+    volumes: [ "./genesis.json:/config/genesis.json:ro", "./node2:/keys:ro" ]
+  node3:
+    <<: *besu
+    command: --genesis-file=/config/genesis.json --node-private-key-file=/keys/key --bootnodes=${BOOTNODE} --min-gas-price=0 --p2p-port=30305
+    volumes: [ "./genesis.json:/config/genesis.json:ro", "./node3:/keys:ro" ]
+  node4:
+    <<: *besu
+    command: --genesis-file=/config/genesis.json --node-private-key-file=/keys/key --bootnodes=${BOOTNODE} --min-gas-price=0 --p2p-port=30306
+    volumes: [ "./genesis.json:/config/genesis.json:ro", "./node4:/keys:ro" ]

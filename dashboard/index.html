@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Land Registry: Consortium Dashboard</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div>
+    <h1>Sindh Land Registry</h1>
+    <p class="sub">Consortium ledger dashboard · Besu QBFT prototype (local node)</p>
+  </div>
+  <div class="net" id="net">connecting…</div>
+</header>
+
+<main>
+  <section class="kpis" id="kpis"></section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2>Parcels (Record of Rights)</h2>
+      <table id="parcels"><thead><tr><th>Khasra</th><th>Location</th><th>Owner</th><th>Area (sq ft)</th><th>Status</th><th>Ver.</th><th>Lien</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Bank ownership check</h2>
+      <p class="hint">What a bank calls before approving a mortgage: <code>verifyOwnership(parcel, owner)</code></p>
+      <label>Parcel <select id="vParcel"></select></label>
+      <label>Claimed owner <select id="vOwner"></select></label>
+      <button id="vBtn">Verify on ledger</button>
+      <div id="vOut" class="result"></div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2>Sales (mutations)</h2>
+      <table id="transfers"><thead><tr><th>#</th><th>Khasra</th><th>Seller → Buyer</th><th>Price (PKR)</th><th>State</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Liens &amp; court cases</h2>
+      <table id="encumb"><thead><tr><th>Type</th><th>Khasra</th><th>Detail</th><th>Status</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="card">
+      <h2>Audit trail (OwnershipChanged events)</h2>
+      <ul id="audit" class="timeline"></ul>
+    </div>
+    <div class="card">
+      <h2>Contracts &amp; public anchor</h2>
+      <table id="contracts"><tbody></tbody></table>
+      <div id="anchor" class="anchor"></div>
+    </div>
+  </section>
+  <p class="foot">Names and locations come from the department's off-chain directory. The ledger stores only identity commitments, parcel keys and document hashes.</p>
+</main>
+<script src="/ethers.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

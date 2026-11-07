@@ -1,0 +1,45 @@
+
+[1] Deploying consortium contracts (RoleManager, ParcelRegistry, LienRegistry, TransferManager, DisputeRegistry)
+    ✔ deployed on 'hardhat', 6 institutional roles granted
+
+[2] NADRA-style KYC binds identity commitments (hash of CNIC+salt) to wallets
+    ✔ Ali=0x2416ea50… Sara=0x696a9bdf… Bilal=0x555f543f…  (no CNIC on chain)
+
+[3] Patwari digitises plot 245/3 (district 31, mouza 101); a different Registrar approves
+    ✔ parcel 0xe11a5cdb… ACTIVE, owner Ali, 5445 sq ft (1 kanal)
+
+[4] Fraudster-patwari tries to register the same plot again under another name
+    ✖ BLOCKED: duplicate registration -> DuplicateParcel("0xe11a5cdb2cf5d8a2ac5c583b019ebc95cd83776a7a88f61eac45c33f525ad527")
+
+[5] Bank verifies ownership instantly (no visit to the patwar khana)
+    ✔ verifyOwnership(Ali) = true, record version 1
+
+[6] Ali consents, bank registers a PKR 5,000,000 mortgage
+    ✔ encumbered = true
+
+[7] Ali tries to sell the mortgaged plot to Sara
+    ✖ BLOCKED: sale of mortgaged land -> ParcelEncumbered()
+
+[8] Loan repaid; bank releases the lien
+    ✔ encumbered = false
+
+[9] Sale to Sara: initiate -> accept -> tax cleared -> 3-day notice -> registrar approves
+    ✖ BLOCKED: double-selling to Bilal -> ParcelBusy(1)
+    ✖ BLOCKED: approval before notice period ends -> NoticePeriodRunning(1794172116)
+    ✔ owner is now Sara; elapsed ledger time 3.0 days; approve gas 78885
+
+[10] Bilal files a suit claiming inheritance; civil court issues a stay
+    ✔ status = Frozen
+    ✖ BLOCKED: sale of frozen land -> ParcelNotActive()
+
+[11] Court decree: Bilal is the rightful owner -> corrective entry appended (history kept)
+    ✔ owner Bilal, status Active, version 3
+
+[12] Full audit trail from events (what an auditor / court would read)
+    v2: 0x2416ea50… -> 0x696a9bdf…  via TransferManager  block 30
+    v3: 0x696a9bdf… -> 0x555f543f…  via DisputeRegistry  block 33
+
+[13] Lost phone: Sara's key is recovered after biometric re-verification + 2-day delay
+    ✔ Sara's identity now bound to 0xF9664e05… - no land re-registration needed
+
+Demo complete.

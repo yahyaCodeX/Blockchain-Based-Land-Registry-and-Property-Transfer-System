@@ -1,0 +1,89 @@
+{
+  "network": "localhost",
+  "timestamp": "2026-11-05T21:11:16.239Z",
+  "gasPerOperation": {
+    "verifyCitizen": 93873,
+    "proposeParcel": 123631,
+    "approveParcel": 61504,
+    "grantLienConsent": 61225,
+    "registerLien": 171134,
+    "releaseLien": 33355,
+    "initiate": 208144,
+    "accept": 36229,
+    "clearTax": 57505,
+    "approve": 78885,
+    "openCase": 178985,
+    "resolveCase(decree)": 69563
+  },
+  "gasCompleteSale4Tx": 380763,
+  "gasRegistration2Tx": 185135,
+  "sequential": {
+    "txs": 200,
+    "seconds": 1.51,
+    "tps": 132.3,
+    "latencyMs": {
+      "p50": 5,
+      "p95": 9,
+      "p99": 12,
+      "max": 14
+    }
+  },
+  "batched": {
+    "txs": 600,
+    "blocksNeeded": 3,
+    "seconds": 38.28,
+    "tps": 15.7,
+    "maxTxPerBlock": 242,
+    "perBlock": [
+      {
+        "block": 461,
+        "txs": 242,
+        "gasUsed": 29918018,
+        "gasLimit": 30000000
+      },
+      {
+        "block": 462,
+        "txs": 242,
+        "gasUsed": 29918066,
+        "gasLimit": 30000000
+      },
+      {
+        "block": 463,
+        "txs": 116,
+        "gasUsed": 14340800,
+        "gasLimit": 30000000
+      }
+    ]
+  },
+  "storage": {
+    "calldataBytesPerRegistration": 132,
+    "eventLogBytesPerRegistration": 192,
+    "stateSlotsPerParcel": 4
+  },
+  "besuProjection": {
+    "blockGasLimit": 30000000,
+    "rows": [
+      {
+        "blockPeriodSeconds": 1,
+        "registrationsTPS": 242.7,
+        "approveTxTPS": 380.3,
+        "completeSalesPerSecond": 78.8,
+        "completeSalesPerDay": 6807384
+      },
+      {
+        "blockPeriodSeconds": 2,
+        "registrationsTPS": 121.3,
+        "approveTxTPS": 190.2,
+        "completeSalesPerSecond": 39.4,
+        "completeSalesPerDay": 3403692
+      },
+      {
+        "blockPeriodSeconds": 5,
+        "registrationsTPS": 48.5,
+        "approveTxTPS": 76.1,
+        "completeSalesPerSecond": 15.8,
+        "completeSalesPerDay": 1361476
+      }
+    ]
+  }
+}

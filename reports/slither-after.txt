@@ -1,0 +1,13 @@
+INFO:Detectors:
+Detector: timestamp
+RoleManager.cancelRecovery(bytes32) (contracts/RoleManager.sol#109-114) uses timestamp for comparisons
+	Dangerous comparisons:
+	- _recoveries[idCommitment].newWallet == address(0) (contracts/RoleManager.sol#110)
+RoleManager.executeRecovery(bytes32) (contracts/RoleManager.sol#116-128) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < r.executableAt (contracts/RoleManager.sol#119)
+TransferManager.approve(uint256) (contracts/TransferManager.sol#128-144) uses timestamp for comparisons
+	Dangerous comparisons:
+	- block.timestamp < t.noticeEndsAt (contracts/TransferManager.sol#131)
+Reference: https://github.com/crytic/slither/wiki/Detector-Documentation#block-timestamp
+INFO:Slither:. analyzed (13 contracts with 102 detectors), 3 result(s) found
